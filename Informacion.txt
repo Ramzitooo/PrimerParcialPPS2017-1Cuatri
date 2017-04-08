@@ -1,0 +1,29 @@
+Primer Parcial Practica Supervisada
+Alumno: Flores Osmar Ain.
+
+Aplicaciones en progrego:
+    -Trivia.
+    -Piedra Papel o Tijera(Jankenpon).
+
+Enunciados:
+
+-Objetivo: Realizar los parciales con funcionalidades definidas en los enunciados, siendo funcionales en dispositivos moviles.
+
+A. Trivia
+        -crear una trivia de minimo 3 preguntas con unica respuesta y varias opciones al menos tres
+        -debe tener icono
+        -debe tener imagen de inicio
+        -debe tener ingreso de usuario(emular login solo con nombre)
+        -debe tener Pagina del autor(nombre, apellido, foto de perfil, mail, gitHub ).
+        -debe tener guardar los resultados
+        -debe tener mostrar las ultimas respuestas ingresadas con el usuario que lo realizó
+B. Piedra papel o tijera
+        -crear el juego para competir con la maquina
+        -debe tener icono
+        -debe tener imagen de inicio
+        -debe tener ingreso de usuario(emular login solo con nombre)
+        -debe tener Pagina del autor(nombre, apellido, foto de perfil, mail, gitHub ).
+        -debe tener guardar los resultados
+        -debe tener mostrar los ultimos diez juegos empatados ( usuario y fecha)
+        -debe tener mostrar los ultimos diez juegos perdidos ( usuario y fecha)
+        -debe tener mostrar los ultimos diez juegos ganados ( usuario y fecha)

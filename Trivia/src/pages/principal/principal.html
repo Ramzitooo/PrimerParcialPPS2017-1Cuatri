@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>({{usuario.nick}}) Trivia </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+
+<div padding>
+  <button ion-button block (click)="Jugar()" color="dark">Jugar</button>
+</div>
+<div padding>
+  <button ion-button block (click)="Resultados()" color="dark">Pantalla de Puntuacion</button>
+</div>
+<div padding>
+  <button ion-button block (click)="Arcade()" color="dark">Arcade De</button>
+</div>
+<div padding>
+  <button ion-button block (click)="Logout()" color="dark">Cerrar sesion</button>
+</div>
+</ion-content>

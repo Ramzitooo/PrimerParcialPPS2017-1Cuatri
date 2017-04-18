@@ -8,9 +8,10 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { LoginPage } from '../pages/login/login';
-import { PrincipalPage } from '../pages/principal/principal';
-import { ResultadosPage } from '../pages/resultados/resultados';
+import { LoginPage } from '../pages/login/login';//AGREGADO!
+import { PrincipalPage } from '../pages/principal/principal';//AGREGADO!
+import { ResultadosPage } from '../pages/resultados/resultados';//AGREGADO!
+import { TriviaPage } from '../pages/trivia/trivia';//AGREGADO!
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,9 +23,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    PrincipalPage,
-    ResultadosPage
+    LoginPage,//AGREGADO!
+    PrincipalPage,//AGREGADO!
+    ResultadosPage,//AGREGADO!
+    TriviaPage//AGREGADO!
   ],
   imports: [
     BrowserModule,
@@ -37,9 +39,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    PrincipalPage,
-    ResultadosPage
+    LoginPage,//AGREGADO!
+    PrincipalPage,//AGREGADO!
+    ResultadosPage,//AGREGADO!
+    TriviaPage//AGREGADO!
   ],
   providers: [
     StatusBar,

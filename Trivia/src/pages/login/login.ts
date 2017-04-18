@@ -22,16 +22,17 @@ export class LoginPage {
 
  user:Usuario= new Usuario();
    Login(){
-  if (this.user.nick=="Ramzo")
+  if (this.user.nick=="Ramzo")//Llamar a la funcion Validar a futuro!
   {
     console.log("Iniciando Sesion");  // Acceso a Pagina Principal.
-    let alert = this.alertCrtl.create(//con esto configuramos el mensaje
+    console.log(this.user);
+    let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
       {
         title: 'Bienvenido',
         message: this.user.nick,
         buttons: ['Ok']
       });
-        alert.present();//ejecutamos el mansaje
+        alert.present();//ejecutamos el mansaje.
     this.navCtrl.setRoot(PrincipalPage, {
       Usuario : this.user
     }, {
@@ -50,12 +51,21 @@ export class LoginPage {
       alert.present();
     }
   }
+  ValidarUsuario():boolean//Implementar a futuro en el login.
+  {
+    return true
+    //Implementar con firebase o nuestra apprest!
+  }
 
   ionViewDidLoad() {console.log('ionViewDidLoad LoginPage');}
 
 }
 export class Usuario {
-    nick:string;
-    pass:string;
-    constructor(){}
+    
+    constructor(public nick : string = "", 
+                public puntuacion : number = 0,
+                public partidas : number = 0,
+                public correctas : number = 0, 
+                public incorrectas : number = 0,)
+                {}
 }

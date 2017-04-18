@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Pregunta #{{mipregunta + 1}} </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <h1>
+      {{user.nick}} 
+  </h1>
+    <ion-label>
+        Puntaje : {{puntajePartida}}
+    </ion-label>
+    <br>
+  <h2>
+      {{preguntas[mipregunta].pregunta}}
+  </h2>
+
+  <ion-list *ngFor="let respuesta of preguntas[mipregunta].respuestas; let i=index">
+    <button ion-button block color = "primary" (click) = "Aceptar(i)">{{respuesta}}</button>
+  </ion-list>
+
+</ion-content>

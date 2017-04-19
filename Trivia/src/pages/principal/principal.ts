@@ -4,7 +4,7 @@ import { AlertController} from "ionic-angular";
 import { LoginPage,Usuario } from '../login/login';//TRAIGO LA CLASE USUARIO
 import { ResultadosPage } from '../resultados/resultados';//AGREGADO
 import { AboutPage } from '../about/about';//AGREGADO
-import { TriviaPage } from '../trivia/trivia';//AGREGADO
+import { TriviaPage,Partida } from '../trivia/trivia';//AGREGADO
 
 
 @Component({
@@ -13,11 +13,13 @@ import { TriviaPage } from '../trivia/trivia';//AGREGADO
 })
 export class PrincipalPage {
   usuario: Usuario = new Usuario();//CREO UN OBJETO DE TIPO USUARIO.
-  
+  mipartida: Partida;
   constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController) 
   {
     
     this.usuario = navParams.get('Usuario');//RECUPERO EL JSON DE "USUARIO" DEL LOGIN.
+      this.mipartida = new Partida();
+  
     
   }
   
@@ -30,12 +32,21 @@ export class PrincipalPage {
   }
   Resultados()
   {
-    this.navCtrl.push(ResultadosPage);
-    console.log("Acceso a la pagina Resultados.");
+    console.log(this.usuario);
+            console.log(this.mipartida);
+            this.navCtrl.setRoot(ResultadosPage, //INDICO QUE PAGINA VOY.
+            {Usuario : this.usuario,//MANDA EL USUARIO YA SETEADO.
+            Partida : this.mipartida,}, //MANDO EL PUNTAJE DE LA PARTIDA ACTUAL.
+            {animate: true, 
+            direction: "forward"});
   }
   Arcade()
   {
-    this.navCtrl.push(AboutPage);
+    //this.navCtrl.push(AboutPage);
+    this.navCtrl.setRoot(AboutPage, 
+    {Usuario : this.usuario}, //ENVIO EL JSON DE MI USUARIO
+    {animate: true, 
+    direction: "forward"});
     console.log("Acceso a la pagina About o Arcade De");
   }
   Logout()

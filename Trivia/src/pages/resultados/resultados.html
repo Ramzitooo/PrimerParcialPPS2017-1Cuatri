@@ -5,13 +5,32 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  
+  <ion-item-group>
+    <ion-item-divider color="light">Partida</ion-item-divider>
+    <ion-item>Puntaje de la Partida: {{mipartida.puntuacion}}     
+    </ion-item>
+    <ion-item>Preguntas correctas: {{mipartida.correctas}}
+    </ion-item>
+    <ion-item>Preguntas incorrectas: {{mipartida.incorrectas}}
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider color="dark">Total de {{user.nick}}</ion-item-divider>
+    <ion-item>Puacion Total: {{user.puntuacion}}      
+    </ion-item>
+    <ion-item>Preguntas correctas: {{user.correctas}}
+    </ion-item>
+    <ion-item>Preguntas incorrectas: {{user.incorrectas}}
+    </ion-item>
+    <ion-item>Partidas Jugadas: {{user.partidas}}
+    </ion-item>
+  </ion-item-group>
+
+  <div padding>
+  <button ion-button block (click)="Jugar()" color="secondary">Volver a Jugar!</button>
+</div>
+<div padding>
+  <button ion-button block (click)="Principal()" color="primary">Menu Principal</button>
+</div>
 </ion-content>

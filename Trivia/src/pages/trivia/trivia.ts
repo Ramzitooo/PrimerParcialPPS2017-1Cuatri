@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController} from "ionic-angular";
-import { LoginPage,Usuario } from '../login/login';//TRAIGO LA CLASE USUARIO
+import { Usuario } from '../login/login';//TRAIGO LA CLASE USUARIO
 import { ResultadosPage } from '../resultados/resultados';//AGREGADO
 //import { ToastController } from 'ionic-angular';
 
@@ -18,8 +18,8 @@ export class TriviaPage
     pregunta2:Preguntas = new Preguntas();
     pregunta3:Preguntas = new Preguntas();
 
-    puntajePartida:number;//PARA EL PUNTAJE DE LA PARTIDA ACTUAL.
-
+    //puntajePartida:number;//PARA EL PUNTAJE DE LA PARTIDA ACTUAL.
+    mipartida:Partida;
     mipregunta:number;//LA PREGUNTA ACTUAL
 
     constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController)
@@ -44,7 +44,8 @@ export class TriviaPage
         this.preguntas.push(this.pregunta2);
         this.preguntas.push(this.pregunta3);
         //CONTADOR EN 0 
-        this.puntajePartida=0;
+        this.mipartida = new Partida();
+        //this.mipartida.puntuacion=0;
         this.mipregunta=0;
     }
     Aceptar(opc:number):void
@@ -53,14 +54,15 @@ export class TriviaPage
         {
             //EN CASI DE SER VERDAD AGREGO MI PUNTAJE DE 100 POR PREGUNTA CORRECTA.
             this.user.puntuacion=this.user.puntuacion+100;
-            this.puntajePartida=this.puntajePartida+100;
+            this.mipartida.puntuacion=this.mipartida.puntuacion+100;
+            this.mipartida.correctas++;
             this.user.correctas++;//CUENTO LAS CORRECTAS EN EL OBJETO USUARIO
             
             console.log("Pregunta "+this.mipregunta+" contesto correctamente!");
         }
         else
         {
-            
+            this.mipartida.incorrectas++;
             this.user.incorrectas++;//CUENTO LAS INCORRECTAS EN EL OBJETO USUARIO
             console.log("Pregunta "+this.mipregunta+" contesto incorrectamente!");
         }
@@ -76,9 +78,10 @@ export class TriviaPage
             this.user.partidas++;
             console.log("Se acabo el juego!");
             console.log(this.user);
+            console.log(this.mipartida);
             this.navCtrl.setRoot(ResultadosPage, //INDICO QUE PAGINA VOY.
             {Usuario : this.user,//MANDA EL USUARIO YA SETEADO.
-            Puntaje : this.puntajePartida,}, //MANDO EL PUNTAJE DE LA PARTIDA ACTUAL.
+            Partida : this.mipartida,}, //MANDO EL PUNTAJE DE LA PARTIDA ACTUAL.
             {animate: true, 
             direction: "forward"});    
         }
@@ -93,7 +96,13 @@ export class Preguntas//CREO UN OBJETO DE TIPO PREGUNTAS.
     
     constructor(){}
 
-   
+}
+export class Partida//CREO UN OBJETO DE TIPO PREGUNTAS.
+{
     
+    
+    constructor(public puntuacion : number=0,
+    public correctas : number=0,
+    public incorrectas : number=0,){}
 
 }

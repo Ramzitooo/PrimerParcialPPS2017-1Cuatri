@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController} from "ionic-angular";
 import { Usuario } from '../login/login';//TRAIGO LA CLASE USUARIO
 import { ResultadosPage } from '../resultados/resultados';//AGREGADO
+import { AngularFire,FirebaseListObservable } from 'angularfire2';//AGREGADO FIRE
+
 //import { ToastController } from 'ionic-angular';
 
 @Component({
@@ -11,9 +13,11 @@ import { ResultadosPage } from '../resultados/resultados';//AGREGADO
 })
 export class TriviaPage 
 {
-    user :Usuario;//CREO UN OBJETO DE TIPO USUARIO.
+    //user :Usuario;//CREO UN OBJETO DE TIPO USUARIO.///////////////////
+    user:any;
     preguntas: Array <Preguntas>;//CREO UN ARRAY DE TIPO PREGUNTAS.
-
+ 
+    usuarios:FirebaseListObservable<any>;//TRAIGO A LOS USUARIOS
     pregunta1:Preguntas = new Preguntas();
     pregunta2:Preguntas = new Preguntas();
     pregunta3:Preguntas = new Preguntas();
@@ -22,8 +26,10 @@ export class TriviaPage
     mipartida:Partida;
     mipregunta:number;//LA PREGUNTA ACTUAL
 
-    constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController)
+    constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController,public fire:AngularFire)
     {
+        this.usuarios=fire.database.list("\Usuarios");//TRAIGO A TODOS LOS USUARIOS
+
         this.user = navParams.get("Usuario");//SETEO EL USUARIO LOGEADO.
         //SETEO MIS PREGUNTAS CON DIFERENTES RESPUESTAS Y 1 CORRECTA.
         this.pregunta1.pregunta="Quien es el mayor goleador de la seleccion argentina de futbol?";
@@ -47,6 +53,11 @@ export class TriviaPage
         this.mipartida = new Partida();
         //this.mipartida.puntuacion=0;
         this.mipregunta=0;
+    }
+    Actualizar()
+    {
+        this.usuarios.update(this.user.$key,this.user);
+        console.log("USUARIO ACTUALIZADO TRIVIA FINALIZACION!");
     }
     Aceptar(opc:number):void
     {
@@ -77,6 +88,9 @@ export class TriviaPage
             //SI ENTRA VOY A LA PANTALLA DE PUNTUACION Y MANDA LOS DATOS NECESARIO PARA LAS MISMAS.
             this.user.partidas++;
             console.log("Se acabo el juego!");
+            console.log(this.user);
+            this.Actualizar();
+            
             console.log(this.user);
             console.log(this.mipartida);
             this.navCtrl.setRoot(ResultadosPage, //INDICO QUE PAGINA VOY.

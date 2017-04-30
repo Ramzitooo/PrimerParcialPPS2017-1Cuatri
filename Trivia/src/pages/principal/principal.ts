@@ -12,13 +12,17 @@ import { TriviaPage,Partida } from '../trivia/trivia';//AGREGADO
   templateUrl: 'principal.html'
 })
 export class PrincipalPage {
-  usuario: Usuario = new Usuario();//CREO UN OBJETO DE TIPO USUARIO.
+ // usuario: Usuario = new Usuario();//CREO UN OBJETO DE TIPO USUARIO.
+ usuario:Usuario;
+ // usuario:any;
   mipartida: Partida;
   constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController) 
   {
     
     this.usuario = navParams.get('Usuario');//RECUPERO EL JSON DE "USUARIO" DEL LOGIN.
       this.mipartida = new Partida();
+      console.log("el usuario desde el principal es: ");
+      console.log(this.usuario);
   
     
   }

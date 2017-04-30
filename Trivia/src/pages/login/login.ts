@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController} from "ionic-angular";
-
+import { AngularFire,FirebaseListObservable } from 'angularfire2';
 
 import { PrincipalPage } from "../principal/principal";
 /*
@@ -17,46 +17,106 @@ import { PrincipalPage } from "../principal/principal";
 
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCrtl:AlertController) {}
+  elusuario:Usuario= new Usuario();//CREO USUARIO NUEVO!
+
+  usuarios:FirebaseListObservable<any[]>;//TRAIGO A LOS USUARIOS
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public alertCrtl:AlertController,
+              public fire: AngularFire) 
+              {
+                this.usuarios=fire.database.list("\Usuarios");
+                this.Existe();
+                
+              }
 
 
- user:Usuario= new Usuario();
-   Login(){
-  if (this.user.nick=="Ramzo")//Llamar a la funcion Validar a futuro!
+ Mostrar()
+ {
+   console.log(this.elusuario);
+   console.log("estoy en mi funcion!")
+ };
+  Login()
   {
-    console.log("Iniciando Sesion");  // Acceso a Pagina Principal.
-    console.log(this.user);
-    let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
-      {
-        title: 'Bienvenido',
-        message: this.user.nick,
-        buttons: ['Ok']
-      });
-        alert.present();//ejecutamos el mansaje.
-    this.navCtrl.setRoot(PrincipalPage, {
-      Usuario : this.user
-    }, {
-      animate: true, 
-      direction: "forward"
-    });
-  }
-  else
-  	{
-      console.log("Email y/o Password incorrecto!!!");
+    if(this.Validar(this.elusuario.nick)==false)
+    {
+      return;
+    }
+    if(this.Existe()==false)
+    {
+      console.log("no existe usuario! login");
       let alert = this.alertCrtl.create({
-        title: 'Error',
-        subTitle: 'El usuario ingresado no existe!',
+        title: 'Datos incorrectos!',
+        message: 'No existe ese nick! o Escribio mal!',
         buttons: ['Ok']
       });
       alert.present();
+      return;
+    }
+    console.log("Sesion iniciada!");  // Acceso a Pagina Principal.
+    console.log(this.elusuario);
+    this.navCtrl.setRoot(PrincipalPage, {Usuario : this.elusuario}, {animate: true, direction: "forward"});
+    let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
+      {title: 'Bienvenido',message: this.elusuario.nick,buttons: ['OK']});
+        alert.present();//ejecutamos el mansaje.
+    //this.navCtrl.setRoot(PrincipalPage, {Usuario : this.elusuario}, {animate: true, direction: "forward"});
+  }
+  Registrarse()
+  {
+    if(this.Validar(this.elusuario.nick)==false)
+    {
+      console.log("Error al guardar nuevo usuario");
+      return;
+    }
+    this.usuarios.push(this.elusuario);
+    console.log("Se agrego nuevo usuario a la base correctamente!");
+    let alert = this.alertCrtl.create({
+        title: 'Listo!',
+        message: 'Te registramos con exito. Ya puedes logearte.',
+        buttons: ['Ok']
+      });
+      alert.present();
+  }
+  Validar(nick)//VALIDO VACIO!
+  {
+    if(nick==""||nick=="Tu nombre...")
+    {
+      let alert = this.alertCrtl.create({
+        title: 'Importante',
+        subTitle: 'Debe ingregar un nick!',
+        buttons: ['Ok']
+      });
+      alert.present();
+      return false;
+    }
+    else
+    {
+      return true;
     }
   }
-  ValidarUsuario():boolean//Implementar a futuro en el login.
-  {
-    return true
-    //Implementar con firebase o nuestra apprest!
-  }
-
+Existe():boolean//LISTO VERIFICO SI EXITE USUARIO INGRESADO!
+{
+  var retorno:boolean;
+ retorno=false;
+  this.usuarios.forEach( users => {
+                  for(let user of users)
+                  {
+                    if(user.nick==this.elusuario.nick)
+                    {
+                        console.log("Existe usuario!");
+                        console.log(user);
+                        this.elusuario=user;
+                        retorno=true;
+                        break;
+                       
+                    }
+                    else
+                    {console.log("El usuario no existe!"); }
+                  }
+                });
+                return retorno;
+                
+}
   ionViewDidLoad() {console.log('ionViewDidLoad LoginPage');}
 
 }
@@ -66,6 +126,6 @@ export class Usuario {
                 public puntuacion : number = 0,
                 public partidas : number = 0,
                 public correctas : number = 0, 
-                public incorrectas : number = 0,)
+                public incorrectas : number = 0)
                 {}
 }

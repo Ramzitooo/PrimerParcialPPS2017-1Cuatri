@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Login </ion-title>
+    <ion-title> Login </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,19 +8,19 @@
   <ion-list>
 
   <ion-item>
-    <ion-label>E-mail</ion-label>
-    <ion-input type="text" [(ngModel)]="user.nick" ></ion-input>
-  </ion-item>
-<br>
-  <ion-item>
-    <ion-label>Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="user.pass"></ion-input>
+    <ion-label>NickName</ion-label>
+    <ion-input type="text" [(ngModel)]="elusuario.nick" value="tu nombre..."></ion-input>
   </ion-item>
 
 </ion-list>
 
 <div padding>
-  <button ion-button block (click)="Login()" color="dark">Entrar</button>
+  <button ion-button block (click)="Login()"color="dark">Entrar</button>
  
 </div>
+<div padding>
+  <button ion-button block (click)="Registrarse()"color="dark">Registrarce</button>
+ 
+</div>
+
 </ion-content>

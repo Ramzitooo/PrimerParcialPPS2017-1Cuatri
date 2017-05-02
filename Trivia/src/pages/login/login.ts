@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController} from "ionic-angular";
 import { AngularFire,FirebaseListObservable } from 'angularfire2';
-
 import { PrincipalPage } from "../principal/principal";
 /*
   Generated class for the Login page.
@@ -57,7 +56,7 @@ export class LoginPage {
     console.log(this.elusuario);
     this.navCtrl.setRoot(PrincipalPage, {Usuario : this.elusuario}, {animate: true, direction: "forward"});
     let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
-      {title: 'Bienvenido',message: this.elusuario.nick,buttons: ['OK']});
+      {title: 'Bienvenido: '+this.elusuario.nick,buttons: ['OK']});
         alert.present();//ejecutamos el mansaje.
     //this.navCtrl.setRoot(PrincipalPage, {Usuario : this.elusuario}, {animate: true, direction: "forward"});
   }
@@ -68,7 +67,12 @@ export class LoginPage {
       console.log("Error al guardar nuevo usuario");
       return;
     }
+    this.elusuario.correctas=0;
+    this.elusuario.incorrectas=0;
+    this.elusuario.partidas=0;
+    this.elusuario.puntuacion=0;
     this.usuarios.push(this.elusuario);
+    //ver si seteo todo en 0.
     console.log("Se agrego nuevo usuario a la base correctamente!");
     let alert = this.alertCrtl.create({
         title: 'Listo!',

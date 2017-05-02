@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <br><br>
+   <ion-list>
+  <ion-item>
+    <ion-label>NickName</ion-label>
+    <ion-input type="text" [(ngModel)]="jugador.nick"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<div padding>
+  <button ion-button block round icon-left (click)="Login()">
+    <ion-icon name='md-bookmarks' is-active="false"></ion-icon>Entrar</button>
+ 
+</div>
+<div padding>
+  <button ion-button block round icon-left (click)="Registrar()"color="secundary">
+    <ion-icon name='md-checkmark-circle' is-active="false"></ion-icon>Registrarse</button>
+</div>
+<div padding>
+          <img src="assets/img/algo1.gif" height="190" width="290" aling="center">
+        </div>
+</ion-content>

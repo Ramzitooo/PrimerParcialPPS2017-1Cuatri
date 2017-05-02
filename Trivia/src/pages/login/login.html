@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <ion-list>
-
+<br> <br>
   <ion-item>
     <ion-label>NickName</ion-label>
     <ion-input type="text" [(ngModel)]="elusuario.nick" value="tu nombre..."></ion-input>
@@ -15,12 +15,15 @@
 </ion-list>
 
 <div padding>
-  <button ion-button block (click)="Login()"color="dark">Entrar</button>
+  <button ion-button block round icon-left (click)="Login()">
+    <ion-icon name='md-bookmarks' is-active="false"></ion-icon>Entrar</button>
  
 </div>
 <div padding>
-  <button ion-button block (click)="Registrarse()"color="dark">Registrarce</button>
- 
+  <button ion-button block round icon-left (click)="Registrarse()"color="secundary">
+    <ion-icon name='md-checkmark-circle' is-active="false"></ion-icon>Registrarse</button>
 </div>
-
+<div padding>
+          <img src="assets/img/kid.gif" height="190" width="290" aling="center">
+        </div>
 </ion-content>

@@ -15,13 +15,14 @@
         Puntaje : {{mipartida.puntuacion}}
     </h1>
     <br>
-  <h2>
+  <h2 text-center>
       {{preguntas[mipregunta].pregunta}}
   </h2>
 <br>
   <ion-list *ngFor="let respuesta of preguntas[mipregunta].respuestas; let i=index">
     <br>
-    <button ion-button block color = "primary" (click) = "Aceptar(i)">{{respuesta}}</button>
+    <button ion-button block round icon-left (click)="Aceptar(i)"color="dark">
+    <ion-icon name='md-game-controller-b' is-active="false"></ion-icon>{{respuesta}}</button>
     <br>
   </ion-list>
 

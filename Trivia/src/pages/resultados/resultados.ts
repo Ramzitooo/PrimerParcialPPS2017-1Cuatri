@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Usuario } from '../login/login';//TRAIGO LA CLASE USUARIO saque login
 import { AlertController} from "ionic-angular";
 import { TriviaPage,Partida } from '../trivia/trivia';
 import { PrincipalPage } from '../principal/principal';
@@ -24,30 +23,45 @@ export class ResultadosPage {
     this.user = navParams.get("Usuario");
 
     this.mipartida = navParams.get("Partida");
-/*this.usuarios.forEach( userss => {
-                  for(let us of userss)
-                  {
-                    if(us.nick==this.user.nick)
-                    {
-                        console.log("Existe usuario! resultados!");
-                        console.log(us);
-                        this.usuarios.update(us.$key,this.user);
-                        
-                        break;
-                       
-                    }
-                    
-                  }
-                });*/
 
     if(this.mipartida.correctas!=0||this.mipartida.incorrectas!=0)
     {
-        if(this.mipartida.puntuacion==300)
+        if(this.mipartida.puntuacion==1000)
+        {
+          let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
+          {
+            title: 'PERFECTO',
+            message: "Respondiste todas las preguntas correctamente!",
+            buttons: ['Ok']
+          });
+            alert.present();
+        }
+        if(this.mipartida.puntuacion==700||this.mipartida.puntuacion==800||this.mipartida.puntuacion==900)
         {
           let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
           {
             title: 'GENIO',
             message: "Eres muy inteligente!",
+            buttons: ['Ok']
+          });
+            alert.present();
+        }
+        if(this.mipartida.puntuacion==400||this.mipartida.puntuacion==500||this.mipartida.puntuacion==600)
+        {
+          let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
+          {
+            title: 'BIEN',
+            message: "Sabes algo... pero te falta.",
+            buttons: ['Ok']
+          });
+            alert.present();
+        }
+        if(this.mipartida.puntuacion==100||this.mipartida.puntuacion==200||this.mipartida.puntuacion==300)
+        {
+          let alert = this.alertCrtl.create(//con esto configuramos el mensaje de bienvenida.
+          {
+            title: 'PESIMO',
+            message: "Deberias leer e informarte mas seguido!",
             buttons: ['Ok']
           });
             alert.present();
@@ -82,22 +96,5 @@ export class ResultadosPage {
     {animate: true, 
     direction: "forward"});
   }
-/*Actualizar()
-    {
-        this.usuarios.forEach( userss => {
-                  for(let us of userss)
-                  {
-                    if(us.nick==this.user.nick)
-                    {
-                        console.log("Existe usuario! TRIVIA");
-                        console.log(us);
-                        this.usuarios.update(us.$key,this.user);
-                        
-                        break;
-                       
-                    }
-                    
-                  }
-                });
-    }*/
+
 }

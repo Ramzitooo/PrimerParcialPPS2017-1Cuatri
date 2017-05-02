@@ -16,7 +16,9 @@ export class PrincipalPage {
  usuario:Usuario;
  // usuario:any;
   mipartida: Partida;
-  constructor(public navCtrl: NavController,public navParams: NavParams,public alertCrtl:AlertController) 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public alertCrtl:AlertController) 
   {
     
     this.usuario = navParams.get('Usuario');//RECUPERO EL JSON DE "USUARIO" DEL LOGIN.

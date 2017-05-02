@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>{{jugador.nick}} - Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+          <img src="assets/img/algo2.gif" height="170" width="300" aling="center">
+        </div>
+  <div padding>
+  <button ion-button block round icon-left (click)="Jugar()"color="dark">
+    <ion-icon name='md-game-controller-b' is-active="false"></ion-icon>Jugar</button>
+</div>
+
+  <div padding>
+  <button ion-button round icon-left block (click)="Arcade()"color="secondary">
+    <ion-icon name='md-eye' is-active="false"></ion-icon>Arcade De</button>
+</div>
+
+  <div padding>
+  <button ion-button round icon-left block (click)="Resultado()">
+    <ion-icon name='md-clipboard' is-active="false"></ion-icon>Resultados</button>
+</div>
+
+  <div padding>
+  <button ion-button round icon-left block (click)="Salir()"color="danger">
+    <ion-icon name='md-close-circle' is-active="false"></ion-icon>Cerrar Sesion</button>
+</div>
+</ion-content>

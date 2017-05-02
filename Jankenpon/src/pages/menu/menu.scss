@@ -1,0 +1,17 @@
+page-menu {
+  ion-content {
+        .centrar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            
+    background-image: url('../assets/img/fondo7.jpg') !important;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  
+    }
+}

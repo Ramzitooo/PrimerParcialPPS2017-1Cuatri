@@ -5,17 +5,26 @@
 </ion-header>
 
 <ion-content padding >
+<div padding>
+          <img src="assets/img/perro.gif" height="190" width="290" aling="center">
+        </div>
+<<div padding>
+  <button ion-button block round icon-left (click)="Jugar()"color="dark">
+    <ion-icon name='md-game-controller-b' is-active="false"></ion-icon>Jugar</button>
+</div>
 
-<div padding>
-  <button ion-button block (click)="Jugar()" color="dark">Jugar</button>
+  <div padding>
+  <button ion-button round icon-left block (click)="Resultados()"color="secondary">
+    <ion-icon name='md-eye' is-active="false"></ion-icon>Resultados</button>
 </div>
-<div padding>
-  <button ion-button block (click)="Resultados()" color="dark">Pantalla de Puntuacion</button>
+
+  <div padding>
+  <button ion-button round icon-left block (click)="Arcade()">
+    <ion-icon name='md-clipboard' is-active="false"></ion-icon>Arcade De</button>
 </div>
-<div padding>
-  <button ion-button block (click)="Arcade()" color="dark">Arcade De</button>
-</div>
-<div padding>
-  <button ion-button block (click)="Logout()" color="dark">Cerrar sesion</button>
+
+  <div padding>
+  <button ion-button round icon-left block (click)="Logout()"color="danger">
+    <ion-icon name='md-close-circle' is-active="false"></ion-icon>Cerrar Sesion</button>
 </div>
 </ion-content>

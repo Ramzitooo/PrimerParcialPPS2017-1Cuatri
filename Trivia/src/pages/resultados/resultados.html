@@ -26,11 +26,12 @@
     <ion-item>Partidas Jugadas: {{user.partidas}}
     </ion-item>
   </ion-item-group>
-
-  <div padding>
-  <button ion-button block (click)="Jugar()" color="secondary">Volver a Jugar!</button>
+<div padding>
+  <button ion-button round icon-left block (click)="Jugar()" color="secondary">
+    <ion-icon name='md-game-controller-b' is-active="false"></ion-icon> Volver a Jugar</button>
 </div>
 <div padding>
-  <button ion-button block (click)="Principal()" color="primary">Menu Principal</button>
+  <button ion-button round icon-left block (click)="Principal()">
+    <ion-icon name='md-arrow-round-back' is-active="false"></ion-icon> Volver al Menu</button>
 </div>
 </ion-content>

@@ -1,17 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+  <ion-navbar color="danger">
+    <ion-title> Login </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<br> <br>
+  <ion-item>
+    <ion-label>NickName</ion-label>
+    <ion-input type="text" [(ngModel)]="heroe.nick" value="tu nombre..."></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<div padding>
+  <button ion-button block round icon-left (click)="Login()">
+    <ion-icon name='md-bookmarks' is-active="false"></ion-icon>Entrar</button>
+ 
+</div>
+<div padding>
+  <button ion-button block round icon-left (click)="Registrarse()"color="secundary">
+    <ion-icon name='md-checkmark-circle' is-active="false"></ion-icon>Registrarse</button>
+</div>
+<div padding>
+          <img src="assets/img/kid.gif" height="190" width="290" aling="center">
+        </div>
 </ion-content>

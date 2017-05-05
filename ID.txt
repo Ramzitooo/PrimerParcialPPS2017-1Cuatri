@@ -1,0 +1,4 @@
+Eston son los ID  para las siguentes aplicaciones para poder verlo en ionic view!
+Trivia:8c6aa383
+Piedra Papel Tijer (Jankenpon):8360d34d
+Piano:26bd7f58

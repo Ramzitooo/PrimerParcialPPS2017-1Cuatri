@@ -4,6 +4,7 @@ Alumno: Flores Osmar Ain.
 Aplicaciones en progrego:
     -Trivia.
     -Piedra Papel o Tijera(Jankenpon).
+    -Piano
 
 Enunciados:
 

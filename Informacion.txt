@@ -28,3 +28,10 @@ B. Piedra papel o tijera
         -debe tener mostrar los ultimos diez juegos empatados ( usuario y fecha)
         -debe tener mostrar los ultimos diez juegos perdidos ( usuario y fecha)
         -debe tener mostrar los ultimos diez juegos ganados ( usuario y fecha)
+C. Piano Temático
+
+        -hacer un piano con botones (minimo 4 + suman puntos)que tengan imágenes y sonidos referidos a un tema en particular(ej: animales , autos, sonidos de la naturaleza, etc)
+        -al presiona el boton vibrar
+        -guardar la ultima melodia tocada en un archivo de texto en el dispositivo
+        -debe tener ingreso de usuario(emular login solo con nombre)
+        -debe tener Pagina del autor(nombre, apellido, foto de perfil, mail, gitHub ).
